@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
     entry: { main: './src/index.js' },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, '.public/dist'),
         filename: '[name].[chunkhash].js'
     },
     module: {
@@ -31,8 +31,8 @@ module.exports = {
                   {
                     loader: 'image-webpack-loader',
                     options: {
-                      bypassOnDebug: true, 
-                      disable: true, 
+                      bypassOnDebug: true,
+                      disable: true,
                     },
                   },
                 ],
@@ -44,7 +44,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({ 
+        new HtmlWebpackPlugin({
             inject: false,
             template: './src/index.html',
             filename: 'index.html'
@@ -65,5 +65,5 @@ module.exports = {
             'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
        })
     ]
- 
+
 }
