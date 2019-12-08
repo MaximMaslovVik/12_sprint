@@ -1,0 +1,8 @@
+.big-image_close{
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 10%;
+    right: 21%;
+    cursor: pointer;
+}
