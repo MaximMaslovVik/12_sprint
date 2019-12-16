@@ -3,7 +3,11 @@ const fs = require('fs');
 
 router.get('/users', (req, res) => {
   fs.readFile('data/users.json', 'utf8', (error, data) => {
-    if (error) throw error;
+    if (error) throw error; {
+      res.statusCode =  500;
+      res.statusMessage = 'Error';
+      res.send({ message: "На сервере произошла ошибка" });
+    }
     res.send(data);
   });
 });
@@ -18,7 +22,7 @@ router.get('/users/:id', (req, res) => {
       res.statusCode = 404;
       res.statusMessage = 'Error';
       res.send({ message: 'Такого пользователя нет' });
-    }
+    };
   });
 });
 
