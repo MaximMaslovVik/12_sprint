@@ -3,10 +3,9 @@ const fs = require('fs');
 
 router.get('/users', (req, res) => {
   fs.readFile('data/users.json', 'utf8', (error, data) => {
-    if (error) throw error; {
-      res.statusCode =  500;
-      res.statusMessage = 'Error';
-      res.send({ message: "На сервере произошла ошибка" });
+    const json = JSON.parse(data);
+    if (error) {
+      return res.status(500).send({ "message": "На сервере произошла ошибка" }).
     }
     res.send(data);
   });
@@ -15,7 +14,7 @@ router.get('/users', (req, res) => {
 router.get('/users/:id', (req, res) => {
   const idUser = req.params.id;
   fs.readFile('data/users.json', 'utf8', (error, data) => {
-    const cityId = JSON.parse(data).find((us) => us._id === idUser);
+    const cityId = JSON.parse(data, id).find((us) => us._id === idUser);
     if (cityId) {
       res.send(cityId);
     } else if (!cityId) {
