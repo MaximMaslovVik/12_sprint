@@ -21,8 +21,9 @@ router.get('/users/:id', (req, res) => {
       if (us._id === idUser){
         return res.send({ data: user });
       }
+      return res.status(404).send({ message: 'Такого пользователя нет' });
     });
-    return res.status(404).send({ message: 'Такого пользователя нет' });
+
   });
 });
 
