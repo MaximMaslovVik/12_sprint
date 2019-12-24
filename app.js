@@ -8,6 +8,6 @@ app.use(express.static(path.join(__dirname, '/public/')));
 app.use('/', users);
 app.use('/', cards);
 
-app.get('/*', (req, res) => res.status(404).send({ message: 'Запрашиваемый ресурс не найден' }));
+app.all('/*', (req, res) => res.status(404).send({ message: 'Запрашиваемый ресурс не найден' }));
 const { PORT = 3000 } = process.env;
 app.listen(PORT, () => {});
