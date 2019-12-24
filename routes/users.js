@@ -18,10 +18,10 @@ router.get('/users/:id', (req, res) => {
       return res.status(500).send({ message: 'На сервере произошла ошибка' });
     }
     const userId = JSON.parse(data).find((us) => us._id === idUser);
-    res.send({ data: userId });
-    if (id = false) {
+    if (!userId) {
       return res.status(404).send({ message: 'Такого пользователя нет' });
     }
+    return res.send({ data: userId });
   });
 });
 
